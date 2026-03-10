@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-clash-grotesk {
+  font-family: "Clash Grotesk", sans-serif;
+}
+
+.font-clash-display {
+  font-family: "Clash Display", sans-serif;
+}

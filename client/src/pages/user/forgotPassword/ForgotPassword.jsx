@@ -39,7 +39,7 @@ const ForgotPassword = () => {
   return (
     <div className="h-screen w-full bg-white flex justify-center">
       <div className="w-96 mt-20">
-        <h1 className="mb-6 text-4xl text-black font-bold">StepUp</h1>
+        <h1 className="mb-6 text-4xl text-black font-bold">OnlineStore</h1>
         <h1 className="mb-6 text-2xl text-black font-light">
           Enter your email to receive a password reset code.
         </h1>
@@ -50,11 +50,9 @@ const ForgotPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email*"
-            className={`peer w-full px-5 py-3 text-base font-medium text-gray-800 bg-transparent border ${
-              errorMessage ? "border-red-500" : "border-black"
-            } rounded-lg placeholder-transparent focus:outline-none focus:ring-0 ${
-              errorMessage ? "focus:border-red-500" : "focus:border-black"
-            }`}
+            className={`peer w-full px-5 py-3 text-base font-medium text-gray-800 bg-transparent border ${errorMessage ? "border-red-500" : "border-black"
+              } rounded-lg placeholder-transparent focus:outline-none focus:ring-0 ${errorMessage ? "focus:border-red-500" : "focus:border-black"
+              }`}
             required
           />
           <label

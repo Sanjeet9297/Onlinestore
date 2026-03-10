@@ -15,13 +15,13 @@ const ForgotPasswordVerify = () => {
   const validateForm = () => {
     let valid = true;
     let newErrors = { code: "", password: "" };
-  
+
     // Validate code
     if (!/^\d{6}$/.test(code)) {
       newErrors.code = "Code must be a 6-digit number.";
       valid = false;
     }
-  
+
     // Validate password
     if (password.length < 8) {
       newErrors.password = "Password must be at least 8 characters.";
@@ -36,11 +36,11 @@ const ForgotPasswordVerify = () => {
       newErrors.password = "Password must contain at least one special character.";
       valid = false;
     }
-  
+
     setErrors(newErrors);
     return valid;
   };
-  
+
 
   const handleForgotPasswordVerify = async () => {
     if (!validateForm()) return;
@@ -59,7 +59,7 @@ const ForgotPasswordVerify = () => {
   return (
     <div className="h-screen w-full bg-white flex justify-center">
       <div className="w-[26rem] mt-20">
-        <h1 className="mb-6 text-4xl text-black font-bold">StepUp</h1>
+        <h1 className="mb-6 text-4xl text-black font-bold">OnlineStore</h1>
         <h1 className="mb-4 text-2xl text-black font-light">
           Verify your email and enter a new password.
         </h1>
@@ -77,11 +77,9 @@ const ForgotPasswordVerify = () => {
             value={code}
             onChange={(e) => setCode(e.target.value)}
             placeholder="Code*"
-            className={`peer w-full px-5 py-3 text-base font-medium text-gray-800 bg-transparent border ${
-              errors.code ? "border-red-500" : "border-black"
-            } rounded-lg placeholder-transparent focus:outline-none focus:ring-0 ${
-              errors.code ? "focus:border-red-500" : "focus:border-black"
-            }`}
+            className={`peer w-full px-5 py-3 text-base font-medium text-gray-800 bg-transparent border ${errors.code ? "border-red-500" : "border-black"
+              } rounded-lg placeholder-transparent focus:outline-none focus:ring-0 ${errors.code ? "focus:border-red-500" : "focus:border-black"
+              }`}
             required
           />
           <label
@@ -103,11 +101,9 @@ const ForgotPasswordVerify = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="New Password*"
-            className={`peer w-full px-5 py-3 text-base font-medium text-gray-800 bg-transparent border ${
-              errors.password ? "border-red-500" : "border-black"
-            } rounded-lg placeholder-transparent focus:outline-none focus:ring-0 ${
-              errors.password ? "focus:border-red-500" : "focus:border-black"
-            }`}
+            className={`peer w-full px-5 py-3 text-base font-medium text-gray-800 bg-transparent border ${errors.password ? "border-red-500" : "border-black"
+              } rounded-lg placeholder-transparent focus:outline-none focus:ring-0 ${errors.password ? "focus:border-red-500" : "focus:border-black"
+              }`}
             required
           />
           <label
@@ -138,10 +134,10 @@ const ForgotPasswordVerify = () => {
               onClick={handleForgotPasswordVerify}
             >
               {loading ? (
-              <span className="loading loading-spinner loading-md text-black"></span>
-            ) : (
-              "Save"
-            )}
+                <span className="loading loading-spinner loading-md text-black"></span>
+              ) : (
+                "Save"
+              )}
             </button>
           </div>
         </div>

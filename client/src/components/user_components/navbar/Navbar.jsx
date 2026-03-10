@@ -44,10 +44,10 @@ const Navbar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     await logoutFunction();
-    console.log("Logging out..."); 
+    console.log("Logging out...");
     dispatch(logoutUser());
     navigate("/login");
-    console.log("User logged out."); 
+    console.log("User logged out.");
     persistor.purge();
   };
 
@@ -58,7 +58,7 @@ const Navbar = () => {
     >
       <Link to={"/"}>
         <h1 className="text-2xl font-font-clash-grotesk cursor-pointer">
-          StepUp
+          OnlineStore
         </h1>
       </Link>
 

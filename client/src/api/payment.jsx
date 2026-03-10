@@ -6,8 +6,8 @@ const API_URL = `${import.meta.env.VITE_API_URL}/payment`;
 const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
 const handlePayment = async (username, email, totalAmount, phonenumber) => {
-  let isPaymentClosed = false; 
-  let paymentFailed = false; 
+  let isPaymentClosed = false;
+  let paymentFailed = false;
   try {
     const { data } = await axios.post(`${API_URL}/createTransaction`, {
       amount: totalAmount,
@@ -22,7 +22,7 @@ const handlePayment = async (username, email, totalAmount, phonenumber) => {
         amount: data.amount,
         currency: data.currency,
         order_id: data.id,
-        name: "StepUp",
+        name: "OnlineStore",
         description: "Payment for Product",
         handler: function (response) {
           toast.success(`Payment Successful`);
@@ -46,9 +46,9 @@ const handlePayment = async (username, email, totalAmount, phonenumber) => {
         modal: {
           ondismiss: function () {
             console.log("Checkout form closed by the user");
-            isPaymentClosed = true; 
+            isPaymentClosed = true;
             console.log("status", paymentFailed)
-            if(paymentFailed){
+            if (paymentFailed) {
               reject({
                 success: false,
                 error: "redirect",

@@ -89,13 +89,13 @@ const OrderDetails = ({ id }) => {
 
     // Header Section
     doc.setFontSize(18);
-    doc.text("StepUp", 14, 20);
+    doc.text("OnlineStore", 14, 20);
     doc.setFontSize(12);
     doc.text("Address Line 1", 14, 28);
     doc.text("Address Line 2", 14, 34);
     doc.text("City, ZIP Code", 14, 40);
     doc.text("Phone: 123-456-7890", 14, 46);
-    doc.text("Email: info@StepUp.com", 14, 52);
+    doc.text("Email: info@OnlineStore.com", 14, 52);
 
     // Title and Date
     doc.setFontSize(16);
@@ -111,8 +111,7 @@ const OrderDetails = ({ id }) => {
     doc.text("Bill To:", 14, 70);
     doc.text(`Client Name: ${username || "John Doe"}`, 14, 76);
     doc.text(
-      `Client Address: ${order.shippingAddress.postcode}, ${
-        order.shippingAddress.town || "123 Client St."
+      `Client Address: ${order.shippingAddress.postcode}, ${order.shippingAddress.town || "123 Client St."
       }`,
       14,
       82
@@ -178,7 +177,7 @@ const OrderDetails = ({ id }) => {
       align: "center",
     });
     doc.text(
-      "If you have any questions, please contact us at support@StepUp.com",
+      "If you have any questions, please contact us at support@OnlineStore.com",
       pageWidth / 2,
       finalY + 6,
       { align: "center" }
@@ -223,48 +222,46 @@ const OrderDetails = ({ id }) => {
             {" - "}
             {(order.paymentMethod === "razorPay" ||
               order.paymentMethod === "Wallet") && (
-              <span
-                className={`px-3 py-1 rounded flex items-center gap-1 ${
-                  order.paymentStatus === "Pending"
-                    ? "bg-red-100 text-red-700"
-                    : "bg-green-100 text-green-700"
-                }`}
-              >
-                {"  "}
-                {order.paymentStatus === "Pending" ? (
-                  <>
-                    <BiTimeFive /> Pending
-                  </>
-                ) : (
-                  <>
-                    <IoIosCheckmarkCircle /> {order.paymentStatus}
-                  </>
-                )}
-              </span>
-            )}
+                <span
+                  className={`px-3 py-1 rounded flex items-center gap-1 ${order.paymentStatus === "Pending"
+                      ? "bg-red-100 text-red-700"
+                      : "bg-green-100 text-green-700"
+                    }`}
+                >
+                  {"  "}
+                  {order.paymentStatus === "Pending" ? (
+                    <>
+                      <BiTimeFive /> Pending
+                    </>
+                  ) : (
+                    <>
+                      <IoIosCheckmarkCircle /> {order.paymentStatus}
+                    </>
+                  )}
+                </span>
+              )}
           </p>
 
           <h1 className="flex items-center">
             Status:
             <div
-              className={`h-2.5 w-2.5 rounded-full ${
-                order.status === "Delivered"
+              className={`h-2.5 w-2.5 rounded-full ${order.status === "Delivered"
                   ? "bg-green-500"
                   : order.status === "Cancelled"
-                  ? "bg-red-500"
-                  : ["Shipped", "Returned"].includes(order.status)
-                  ? "bg-yellow-500"
-                  : order.status === "Processing"
-                  ? "bg-blue-500"
-                  : ""
-              } ms-2 me-1`}
+                    ? "bg-red-500"
+                    : ["Shipped", "Returned"].includes(order.status)
+                      ? "bg-yellow-500"
+                      : order.status === "Processing"
+                        ? "bg-blue-500"
+                        : ""
+                } ms-2 me-1`}
             ></div>{" "}
             {order.status}
           </h1>
 
           {!order.isCancelled &&
-          (order.paymentStatus === "Completed" ||
-            order.paymentStatus === "Refunded") ? (
+            (order.paymentStatus === "Completed" ||
+              order.paymentStatus === "Refunded") ? (
             <button
               className="btn py-2 absolute bottom-5 w-[80%] text-white bg-black"
               onClick={() => handleDownloadInvoice(order._id)}
@@ -338,9 +335,8 @@ const OrderDetails = ({ id }) => {
           </div>
 
           <button
-            className={`btn py-2 absolute bottom-5 w-[94%] tracking-widest ${
-              order.isCancelled ? "text-black" : "text-white"
-            } bg-black rounded-lg transition`}
+            className={`btn py-2 absolute bottom-5 w-[94%] tracking-widest ${order.isCancelled ? "text-black" : "text-white"
+              } bg-black rounded-lg transition`}
             onClick={() =>
               openModal(
                 order._id,
@@ -354,8 +350,8 @@ const OrderDetails = ({ id }) => {
             {order.status === "Delivered"
               ? "Request Return"
               : order.isCancelled
-              ? "Order Cancelled"
-              : "Cancel Order"}
+                ? "Order Cancelled"
+                : "Cancel Order"}
           </button>
         </div>
       </div>

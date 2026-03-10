@@ -8,7 +8,7 @@ const AdminLogin = () => {
   //Checking admin loggedIn or not
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
-    if(token){
+    if (token) {
       console.log("admin already exists");
       navigate('/dashboard/overview')
     }
@@ -68,7 +68,7 @@ const AdminLogin = () => {
             className="w-[286px] rotate-[321deg] brightness-[0.6] relative right-[40px] bottom-[35px]"
           />
 
-          <h1 className="text-6xl absolute font-bold text-white">StepUp</h1>
+          <h1 className="text-6xl absolute font-bold text-white">OnlineStore</h1>
         </div>
         <div className="w-[50%] text-black font-clash-grotesk flex flex-col items-center justify-center py-3 gap-8 text-center">
           <div>

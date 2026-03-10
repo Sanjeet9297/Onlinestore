@@ -6,9 +6,8 @@ import { setUser } from "../../../features/users/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { signUp, storeGoogleInfo } from "../../../api/users";
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../../../firebase/firebase";
+import { auth, googleProvider } from "../../../lib/firebase/firebase";
 import { toast } from "react-toastify";
-import { sendOtp } from "../otp/OtpPage";
 import { initializeBag } from "../../../features/bag/BagSlice";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
@@ -87,9 +86,20 @@ const Signup = () => {
     if (validate()) {
       setLoading(true);
       try {
-        const { newUser } = await signUp(formData);
-        await sendOtp(newUser);
-        navigate("/otp");
+        const data = await signUp(formData);
+        if (data) {
+          dispatch(
+            setUser({
+              uid: data.newUser._id,
+              username: data.newUser.username,
+              email: data.newUser.email,
+              isVerified: data.newUser.isVerified,
+              googleUser: false,
+            })
+          );
+          dispatch(initializeBag({ userId: data.newUser._id }));
+          navigate("/");
+        }
       } catch (error) {
         console.error("Signup failed:", error);
       } finally {
@@ -147,7 +157,7 @@ const Signup = () => {
             alt=""
             className="w-[286px] rotate-[321deg] brightness-[0.6] relative right-[40px] bottom-[35px]"
           />
-          <h1 className="text-6xl absolute font-bold text-white">StepUp</h1>
+          <h1 className="text-6xl absolute font-bold text-white">OnlineStore</h1>
         </div>
         <div className="w-[50%] text-black font-clash-grotesk flex flex-col items-center justify-evenly py-3 gap-3 text-center">
           <div>
@@ -199,7 +209,7 @@ const Signup = () => {
 
             <div className="relative w-80">
               <input
-                type={passwordVisible ? "text" : "password"} 
+                type={passwordVisible ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}

@@ -4,7 +4,7 @@ import SignupImg from "../../../assets/images/auth/nike.png";
 import { Link, useNavigate } from "react-router-dom";
 import { login, storeGoogleInfo } from "../../../api/users";
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../../../firebase/firebase";
+import { auth, googleProvider } from "../../../lib/firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../features/users/UserSlice";
 import { initializeBag } from "../../../features/bag/BagSlice";
@@ -112,7 +112,7 @@ const Login = () => {
             className="w-[286px] rotate-[321deg] brightness-[0.6] relative right-[40px] bottom-[35px]"
           />
 
-          <h1 className="text-6xl absolute font-bold text-white">StepUp</h1>
+          <h1 className="text-6xl absolute font-bold text-white">OnlineStore</h1>
         </div>
         <div className="w-[50%] text-black font-clash-grotesk flex flex-col items-center justify-evenly py-3 gap-3 text-center">
           <div>
@@ -120,7 +120,7 @@ const Login = () => {
               Welcome Back
             </h1>
             <h3 className="text-sm text-[#201f1fde] font-semibold">
-              New to StepUp?{" "}
+              New to OnlineStore?{" "}
               <Link to={"/signup"} className="text-black underline">
                 Sign Up
               </Link>

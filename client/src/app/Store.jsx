@@ -6,7 +6,7 @@ import userReducer from '../features/users/UserSlice';
 import bagReducer from '../features/bag/BagSlice';
 import offerReducer from '../features/offers/OfferSlice';
 
-//persist Config
+//persist Configg
 const persistConfig = {
     key : "root",
     storage

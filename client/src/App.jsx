@@ -54,7 +54,8 @@ const ForgotPasswordVerify = lazy(() =>
 );
 
 const App = () => {
-  const { uid } = useSelector((state) => state.user);
+  const userState = useSelector((state) => state.user) || {};
+  const { uid } = userState;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

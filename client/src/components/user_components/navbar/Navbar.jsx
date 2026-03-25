@@ -11,7 +11,8 @@ import { logoutUser } from "../../../features/users/UserSlice";
 import { persistor } from "../../../app/Store";
 
 const Navbar = () => {
-  const { username, email } = useSelector((state) => state.user);
+  const userState = useSelector((state) => state.user) || {};
+  const { username, email } = userState;
   const navRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [logout, setLogout] = useState(false);

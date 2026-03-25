@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const API_URL = `${import.meta.env.VITE_API_URL}/category`;
 
@@ -51,15 +51,15 @@ const toggleCategoryStatus = async (categoryId) => {
   try {
     const response = await axios.patch(
       `${API_URL}/toggle/${categoryId}`,
-      {}, 
+      {},
       {
         headers: { Authorization: `Bearer ${token}` }
       }
     );
 
     if (response.data) {
-      toast.success(response.data.message); 
-      return response.data; 
+      toast.success(response.data.message);
+      return response.data;
     }
   } catch (error) {
     console.error('Error toggling category status:', error);
@@ -68,7 +68,7 @@ const toggleCategoryStatus = async (categoryId) => {
 };
 
 //Top selling categories
-const getTopSellingCategories = async() => {
+const getTopSellingCategories = async () => {
   try {
     const response = await axios.get(`${API_URL}/top-selling/categories`);
 
